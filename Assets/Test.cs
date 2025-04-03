@@ -12,6 +12,8 @@ public class Test : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
            PlayerPrefs.SetFloat("Quan", 3.13f);
+            PlayerPrefs.SetInt("Int", 6);
+            PlayerPrefs.SetString("a", "áas");
         }
     }
 }

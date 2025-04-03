@@ -74,3 +74,16 @@ crashlytics-build.properties
 # Packed Addressables
 /[Aa]ssets/[Ff]irebase
 /[Aa]ssets/[Pp]lugins
+
+# Unity-generated folders
+/[Aa]ssets/
+/[Ll]ibrary/
+/[Ll]ogs/
+/[Oo]bj/
+/[Tt]emp/
+/UserSettings/
+
+# Visual Studio/Meta files
+*.csproj
+*.sln
+*.meta

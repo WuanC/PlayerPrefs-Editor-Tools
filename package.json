@@ -1,0 +1,14 @@
+{
+    "name": "com.wuanc.playerprefs-editor",
+    "displayName": "PlayerPrefs Editor",
+    "version": "1.0.0",
+    "unity": "2022.3.55f",
+    "description": "A tool to view, edit, and delete PlayerPrefs in Unity Editor.",
+    "keywords": ["playerprefs", "editor", "tool", "debug"],
+    "category": "Editor",
+    "dependencies": {},
+    "author": {
+      "name": "WuanC",
+      "email": "gon28032004@gmail.com"
+    }
+  }
