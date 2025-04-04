@@ -3,7 +3,7 @@
 ## 📥 Cài đặt
 1. Mở **Window > Package Manager** trong Unity.
 2. Chọn **Add package from git URL**.
-3. Nhập: `https://github.com/your-username/unity-playerprefs-editor.git`
+3. Nhập: `https://github.com/WuanC/PlayerPrefs-Editor-Tools.git`
 
 ## 🚀 Cách dùng
 - Mở tool: **Tools > PlayerPrefs Editor**.
