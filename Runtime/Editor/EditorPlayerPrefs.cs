@@ -60,8 +60,8 @@ public class EditorPlayerPrefs : EditorWindow
         EditorGUILayout.Space(5);
         EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
         GUILayout.Label("Key", EditorStyles.boldLabel, GUILayout.Width(200));
-        GUILayout.Label("Value", EditorStyles.boldLabel, GUILayout.ExpandWidth(true));
-        GUILayout.Label("Type", EditorStyles.boldLabel, GUILayout.Width(80));
+        GUILayout.Label("Type", EditorStyles.boldLabel, GUILayout.ExpandWidth(true));
+        GUILayout.Label("Value", EditorStyles.boldLabel, GUILayout.Width(80));
         GUILayout.Label("Del", EditorStyles.boldLabel, GUILayout.Width(40));
         EditorGUILayout.EndHorizontal();
 
@@ -71,7 +71,7 @@ public class EditorPlayerPrefs : EditorWindow
     public void DrawMain()
     {
 
-        List <string> playerPrefsKeys = GetAllPlayerPrefsKey();
+        List<string> playerPrefsKeys = GetAllPlayerPrefsKey();
         if (playerPrefsKeys == null || playerPrefsKeys.Count == 0) return;
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
         foreach (string element in playerPrefsKeys)
@@ -130,8 +130,8 @@ public class EditorPlayerPrefs : EditorWindow
         {
             PlayerPrefsType type = GetType(key);
             string value = "";
-            if(type == PlayerPrefsType.Unknown) return;
-            else if(type == PlayerPrefsType.Int)
+            if (type == PlayerPrefsType.Unknown) return;
+            else if (type == PlayerPrefsType.Int)
             {
                 value = PlayerPrefs.GetInt(key).ToString();
             }
@@ -150,30 +150,34 @@ public class EditorPlayerPrefs : EditorWindow
 
             if (EditorGUI.EndChangeCheck() && newValue != value)
             {
-                    if (type == PlayerPrefsType.Unknown) return;
-                    else if (type == PlayerPrefsType.Int && int.TryParse(newValue, out int iParseValue))
-                    {
-                        PlayerPrefs.SetInt(key, iParseValue);
-                    }
-                    else if (type == PlayerPrefsType.Float && float.TryParse(newValue, out float fParseValue))
-                    {
-                        PlayerPrefs.SetFloat(key, fParseValue);
-                    }
-                    else if (type == PlayerPrefsType.String)
-                    {
-                        PlayerPrefs.SetString(key, newValue);
-                    }
-                    PlayerPrefs.Save();
-                
+                if (type == PlayerPrefsType.Unknown) return;
+                else if (type == PlayerPrefsType.Int && int.TryParse(newValue, out int iParseValue))
+                {
+                    PlayerPrefs.SetInt(key, iParseValue);
+                }
+                else if (type == PlayerPrefsType.Float && float.TryParse(newValue, out float fParseValue))
+                {
+                    PlayerPrefs.SetFloat(key, fParseValue);
+                }
+                else if (type == PlayerPrefsType.String)
+                {
+                    PlayerPrefs.SetString(key, newValue);
+                }
+                PlayerPrefs.Save();
+
             }
             if (GUILayout.Button("Delete", GUILayout.Width(60)))
             {
-
-                if (PlayerPrefs.HasKey(key))
+                if (EditorUtility.DisplayDialog("Delete PlayerPrefs",
+                                                  $"Are you sure you want to delete PlayerPrefs key: {key}?", "Yes", "No"))
                 {
-                    PlayerPrefs.DeleteKey(key);
-                    PlayerPrefs.Save();
+                    if (PlayerPrefs.HasKey(key))
+                    {
+                        PlayerPrefs.DeleteKey(key);
+                        PlayerPrefs.Save();
+                    }
                 }
+
             }
         }
         EditorGUILayout.EndHorizontal();
